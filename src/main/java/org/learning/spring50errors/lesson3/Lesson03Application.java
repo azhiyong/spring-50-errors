@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
+import java.util.List;
+
 @SpringBootApplication
 public class Lesson03Application {
 
@@ -14,9 +17,19 @@ public class Lesson03Application {
 
     @Bean
     public User user1() {
+        return newUser("lisi", 12);
+    }
+
+    @Bean
+    public List<User> userList() {
+        return Arrays.asList(newUser("zhangsan", 30),
+                newUser("wangwu", 23));
+    }
+
+    private User newUser(String name, int age) {
         User user = new User();
-        user.setName("li");
-        user.setAge(1);
+        user.setName(name);
+        user.setAge(age);
         return user;
     }
 }
