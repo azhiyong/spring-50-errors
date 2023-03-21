@@ -12,4 +12,10 @@ public class LightService {
     public void shutdown() {
         System.out.println("light service shutdown");
     }
+
+//    @Service和@Bean注解在shutdown方法上不同
+//    @Bean
+//    public LightService lightService() {
+//        return new LightService();
+//    }
 }

@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * Created on 2023-02-07
  */
 @RestController
-public class HiController {
+public class HelloController {
 
     @Resource
     private UserService userService;
@@ -22,9 +22,9 @@ public class HiController {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @GetMapping("hi")
-    public String helloWorld() {
-        return "Hello, World! " + userService + "; " + getUserService1() + "; " + getUserService2();
+    @GetMapping("hello")
+    public String hello() {
+        return "Hello, " + userService + "; " + getUserService1() + "; " + getUserService2();
     }
 
     @Lookup

@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-public class StudentController {
+public class HelloController {
 
     @Resource
-    @Qualifier("studentController.InnerClassDataService")
-    private InnerClassDataService innerClassDataService;
+    @Qualifier("helloController.InnerClassService")
+    private InnerClassService innerClassService;
 
-    @GetMapping("hi")
-    public String hi() {
-        return "hi, " + innerClassDataService;
+    @GetMapping("hello")
+    public String hello() {
+        return "hello, " + innerClassService;
     }
 
     @Repository
-    public static class InnerClassDataService {
-        public void deleteStudent(int id) {
+    public static class InnerClassService {
+        public void justRun() {
         }
     }
 }
