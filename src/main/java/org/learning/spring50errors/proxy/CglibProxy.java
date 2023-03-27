@@ -1,6 +1,7 @@
 package org.learning.spring50errors.proxy;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
@@ -15,6 +16,7 @@ import java.lang.reflect.Method;
 public class CglibProxy {
 
     public static void main(String[] args) {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, CglibProxy.class.getClassLoader().getResource(".").getPath());
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(HelloServiceImpl.class);
         enhancer.setCallback(new MethodInterceptor() {

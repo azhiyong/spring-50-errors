@@ -1,6 +1,7 @@
 package org.learning.spring50errors.lesson5.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class ElectricService {
+    
+    @Autowired
+    private UserService userService;
 
     public void charge() throws InterruptedException {
         log.info("electric service charge");
@@ -17,7 +21,9 @@ public class ElectricService {
     }
 
     public void pay() throws InterruptedException {
-        log.info("electric service pay");
+        userService.login();
+        String payNum = userService.getUser().getPayNum();
+        log.info("electric service pay, payNum:{}", payNum);
         Thread.sleep(1000);
     }
 }
