@@ -24,12 +24,21 @@ public class AopConfig {
         return obj;
     }
 
+    @Around("execution(* org.learning.spring50errors.lesson5.service.ElectricService.charge(..))")
+    public Object chargePerformance(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object obj = joinPoint.proceed();
+        long end = System.currentTimeMillis();
+        log.info("around charge {} method cost {}ms", joinPoint.toShortString(), end - start);
+        return obj;
+    }
+
     @Around("execution(* org.learning.spring50errors.lesson5.service.ElectricService.pay(..))")
     public Object payPerformance(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         Object obj = joinPoint.proceed();
         long end = System.currentTimeMillis();
-        log.info("payPerformance {} method cost {}ms", joinPoint.toShortString(), end - start);
+        log.info("around pay {} method cost {}ms", joinPoint.toShortString(), end - start);
         return obj;
     }
 }

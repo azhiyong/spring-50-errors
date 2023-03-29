@@ -12,5 +12,10 @@ class HelloServiceImpl implements HelloService {
     @Override
     public void hello() {
         log.info("hello service impl");
+        this.justHello();
+    }
+
+    public void justHello() {
+        log.info("just hello in HelloServiceImpl");
     }
 }
